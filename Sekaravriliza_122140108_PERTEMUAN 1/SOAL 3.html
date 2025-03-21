@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validasi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: auto;
+        }
+        input, button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .error {
+            color: red;
+            font-size: 12px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Form Validasi</h2>
+        <form id="validationForm">
+            <input type="text" id="name" placeholder="Nama">
+            <div class="error" id="nameError"></div>
+            
+            <input type="email" id="email" placeholder="Email">
+            <div class="error" id="emailError"></div>
+            
+            <input type="password" id="password" placeholder="Password">
+            <div class="error" id="passwordError"></div>
+            
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("validationForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            let valid = true;
+            
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value.trim();
+            
+            const nameError = document.getElementById("nameError");
+            const emailError = document.getElementById("emailError");
+            const passwordError = document.getElementById("passwordError");
+            
+            nameError.textContent = "";
+            emailError.textContent = "";
+            passwordError.textContent = "";
+            
+            if (name.length <= 3) {
+                nameError.textContent = "Nama harus lebih dari 3 karakter";
+                valid = false;
+            }
+            
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                emailError.textContent = "Email tidak valid";
+                valid = false;
+            }
+            
+            if (password.length < 8) {
+                passwordError.textContent = "Password harus minimal 8 karakter";
+                valid = false;
+            }
+            
+            if (valid) {
+                alert("Form berhasil dikirim!");
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Lengkap</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background: white;
+        }
+        input, button {
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button { cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Kalkulator</h1>
+        <input type="number" id="angka1" placeholder="Masukkan angka pertama">
+        <input type="number" id="angka2" placeholder="Masukkan angka kedua">
+        <br>
+        <button onclick="hitung('tambah')">Tambah (+)</button>
+        <button onclick="hitung('kurang')">Kurang (-)</button>
+        <button onclick="hitung('kali')">Kali (×)</button>
+        <button onclick="hitung('bagi')">Bagi (÷)</button>
+        <button onclick="hitung('pangkat')">Pangkat (^)</button>
+        <button onclick="hitung('akar')">Akar √</button>
+        <button onclick="hitung('modulus')">Modulus (%)</button>
+        <br>
+        <h3 id="hasil">Hasil: </h3>
+        <button onclick="reset()">Hapus</button>
+    </div>
+
+    <script>
+        function hitung(operasi) {
+            let angka1 = parseFloat(document.getElementById("angka1").value);
+            let angka2 = parseFloat(document.getElementById("angka2").value);
+            let hasil = "";
+
+            if (isNaN(angka1)) {
+                document.getElementById("hasil").innerText = "Masukkan angka pertama!";
+                return;
+            }
+
+            switch (operasi) {
+                case "tambah": hasil = angka1 + angka2; break;
+                case "kurang": hasil = angka1 - angka2; break;
+                case "kali": hasil = angka1 * angka2; break;
+                case "bagi": 
+                    hasil = angka2 !== 0 ? angka1 / angka2 : "Error: Pembagian dengan nol";
+                    break;
+                case "pangkat": hasil = Math.pow(angka1, angka2); break;
+                case "akar": 
+                    hasil = angka1 >= 0 ? Math.sqrt(angka1) : "Error: Angka harus positif";
+                    break;
+                case "modulus": hasil = angka1 % angka2; break;
+                default: hasil = "Operasi tidak valid";
+            }
+            document.getElementById("hasil").innerText = "Hasil: " + hasil;
+        }
+
+        function reset() {
+            document.getElementById("angka1").value = "";
+            document.getElementById("angka2").value = "";
+            document.getElementById("hasil").innerText = "Hasil: ";
+        }
+    </script>
+</body>
+</html>
