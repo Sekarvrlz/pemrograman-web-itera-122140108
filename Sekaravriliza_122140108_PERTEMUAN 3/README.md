@@ -2,7 +2,7 @@ Manajemen Buku Pribadi
 Aplikasi Manajemen Buku Pribadi adalah sebuah aplikasi berbasis React yang dirancang untuk membantu pengguna dalam mengelola koleksi buku milik pribadi. Dengan tampilan yang sederhana namun fungsional, pengguna dapat mencatat buku yang mereka miliki, memfilter berdasarkan status, serta menambahkan atau menghapus data buku sesuai kebutuhan. Aplikasi ini sangat cocok digunakan oleh pelajar, mahasiswa, atau siapa pun yang gemar membaca dan ingin menjaga catatan bacaan mereka tetap rapi dan terorganisir.
 
 Cara Instalasi dan Menjalankan Aplikasi
-1. buka crome lalu salin link berikut (<>)
+1. buka crome lalu salin link berikut (<https://book-binder.vercel.app/>)
 
 Cuplikan Antarmuka Aplikasi
 Berikut adalah tampilan dari beberapa bagian utama aplikasi:
