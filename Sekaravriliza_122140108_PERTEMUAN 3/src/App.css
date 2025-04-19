@@ -1,0 +1,416 @@
+/* === RESET & GLOBAL === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+html, body {
+  height: 100%;
+  background-color: #c8d6e4; /* biru muda */
+  color: #333;
+  line-height: 1.6;
+  overflow: auto;
+}
+
+button {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:disabled {
+  background-color: #f1eeee;
+  cursor: not-allowed;
+}
+
+/* === ROOT LAYOUT === */
+#root, .app-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* === HEADER === */
+/* Header */
+header {
+  background-color: #144e90;
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: fixed; /* Membuat header tetap di atas */
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  z-index: 10; /* Menempatkan header di atas konten lainnya */
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.site-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.header-nav {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-item {
+  padding: 10px 20px;
+  background-color: #144e90;
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-item:hover {
+  background-color: #efefef45;
+  transform: translateY(-3px);
+}
+
+.nav-item:active {
+  transform: translateY(1px);
+}
+
+body {
+  padding-top: 80px; 
+}
+
+/* === FOOTER === */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  background-color: #144087;
+  color: white;
+  text-align: center;
+  line-height: 50px;
+  z-index: 1000;
+  box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* === MAIN CONTENT === */
+.main-content {
+  flex: 1;
+  padding: 100px 20px 60px; /* atas dan bawah untuk header/footer */
+  overflow-y: auto;
+}
+
+/* === PAGE SECTION === */
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  background-color: #c8d6e4;
+  min-width: 100vh;
+}
+
+.page-title {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+}
+
+/* === FORM BUKU === */
+.book-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 150%; 
+  max-width: 1000px; 
+  margin-bottom: 20px;
+}
+
+.book-form input,
+.book-form select {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.book-form input:focus,
+.book-form select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+}
+
+.book-form button {
+  background: linear-gradient(135deg, #0f724d, #2E7D32);
+  color: white;
+  border: none;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  width: fit-content;
+  align-self: center; /* ubah dari flex-start ke center */
+}
+
+.book-form button:hover {
+  background: linear-gradient(135deg, #14562fd3, #14562fe0);
+  transform: scale(1.03);
+}
+
+.book-form button:active {
+  transform: scale(0.98);
+}
+
+/* === FILTER === */
+.filters {
+  display: flex;
+  justify-content: space-between;
+  gap: 2px;
+  margin: 10px 0;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 400px;
+}
+
+.filter-item {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 150px;
+}
+
+.filter-item label {
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #474545;
+}
+
+.filter-item input,
+.filter-item select {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+/* === TABEL BUKU === */
+.table-container {
+  width: 100%;
+  max-width: 1000px;
+  margin-top: 20px;
+}
+
+.book-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 1px;
+  background-color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  table-layout: auto;
+}
+
+.book-table thead {
+  background: linear-gradient(to right, #1a5292, #0b559e);
+}
+
+.book-table th {
+  color: #fff;
+  font-size: 1rem;
+  padding: 16px 20px;
+  text-align: center;
+  font-weight: 600;
+  border-bottom: 2px solid #e0e0e0;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.book-table td {
+  padding: 14px 20px;
+  font-size: 0.95rem;
+  color: #333;
+  background-color: #fafafa;
+  border-bottom: 1px solid #eee;
+  transition: background-color 0.3s ease;
+}
+
+.book-table tr:nth-child(even) td {
+  background-color: #f9fcff;
+}
+
+.book-table tbody tr:hover {
+  background-color: #f1f7ff;
+}
+
+.book-table td[colspan="4"] {
+  text-align: center;
+  font-style: italic;
+  color: #888;
+}
+
+.book-table .action-cell {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.book-table button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.book-table button:nth-child(1),
+.btn-edit {
+  background-color: #ffc107;
+  color: #333;
+}
+
+.book-table button:nth-child(1):hover,
+.btn-edit:hover {
+  background-color: #e0a800;
+  transform: translateY(-2px);
+}
+
+.book-table button:nth-child(2),
+.btn-delete,
+.delete-btn {
+  background-color: #f44336;
+  color: white;
+}
+
+.book-table button:nth-child(2):hover,
+.btn-delete:hover,
+.delete-btn:hover {
+  background-color: #d32f2f;
+  transform: translateY(-2px);
+}
+
+.delete-btn:focus {
+  outline: none;
+}
+
+/* Kolom Lebar */
+.book-table th:nth-child(1),
+.book-table td:nth-child(1) {
+  width: 12%;
+}
+
+.book-table th:nth-child(2),
+.book-table td:nth-child(2) {
+  width: 38%;
+}
+
+.book-table th:nth-child(3),
+.book-table td:nth-child(3) {
+  width: 30%;
+}
+
+.book-table th:nth-child(4),
+.book-table td:nth-child(4) {
+  width: 20%;
+}
+
+/* === STATISTIK === */
+.stats-grid {
+  display: flex;
+  gap: 30px;
+  margin-top: 100px;
+  flex-wrap: wrap;
+  
+}
+
+.stat-card {
+  flex: 1;
+  min-width: 200px;
+  background-color: #fafafa;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+}
+
+.stat-card h2 {
+  margin-bottom: 10px;
+  font-size: 1.4rem;
+  color: #333;
+}
+
+.stat-card p {
+  font-size: 2rem;
+  font-weight: bold;
+  color: hsl(216, 87%, 25%);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .filters {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .filter-item input,
+  .filter-item select {
+    width: 100%;
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  footer p {
+    font-size: 0.9rem;
+  }
+
+  .book-table th,
+  .book-table td {
+    font-size: 0.9rem;
+    padding: 10px 12px;
+  }
+
+  .book-table .action-cell {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .book-table button {
+    width: 100%;
+  }
+}
